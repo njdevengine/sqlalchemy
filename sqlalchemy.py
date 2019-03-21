@@ -25,3 +25,12 @@ Base.metadata.create_all(engine)
 from sqlalchemy.orm import Session
 session = Session(bind=engine)
 
+session.add(myDog)
+session.commit()
+myDogToo = Dog(name="pepe",color="blue",age=10)
+session.add(myDogToo)
+session.commit()
+
+dog_list = session.query(Dog)
+for aDog in dog_list:
+    print('my dog is:', aDog.name,'and is', aDog.color )
